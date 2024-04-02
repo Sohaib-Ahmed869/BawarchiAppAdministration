@@ -66,6 +66,9 @@ const Navbar = () => {
                                 <li 
                                 className='cursor-pointer border-b border-gray-400 pb-2'
                                 ><a href="/cashier/cashier-add">Add Cashier</a></li>
+                                <li 
+                                className='cursor-pointer border-b border-gray-400 pb-2'
+                                ><a href="/cashier/cashier-update">View and Update Cashier</a></li>
                             </ul>
                         )
                     }

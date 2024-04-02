@@ -17,8 +17,8 @@ const CashierDash = () => {
                 <div className="w-full md:w-2/3 px-4 py-6  rounded-md shadow-md bg-black bg-opacity-50 border border-gray-700 rounded p-4 h-auto flex flex-col justify-center">
                     <h1 className="text-2xl text-white text-center mb-4">Cashier Dashboard</h1>
                     <div className="flex flex-col gap-4">
-                        <a href="/category/cashier-add" className="text-white text-center bg-gray-500 hover:bg-orange-500 py-2 rounded-md">Add Cashier</a>
-                        <a href="/category/cashier-update" className="text-white text-center bg-gray-500 hover:bg-orange-500 py-2 rounded-md">View and Update Cashier</a>
+                        <a href="/cashier/cashier-add" className="text-white text-center bg-gray-500 hover:bg-orange-500 py-2 rounded-md">Add Cashier</a>
+                        <a href="/cashier/cashier-update" className="text-white text-center bg-gray-500 hover:bg-orange-500 py-2 rounded-md">View and Update Cashier</a>
                     </div>
                 </div>
             </main>

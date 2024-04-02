@@ -99,6 +99,7 @@ const ProductAdd = () => {
                             <div className="mb-4">
                                 <label htmlFor="Category" className="block text-white-700 mb-2">Category</label>
                                 <select id="Category" value={Category} onChange={(e) => setCategory(e.target.value)} className="w-full px-3 py-2 rounded-md bg-gray-800 text-white">
+                                    <option value="">Select Category</option>
                                     {categories.map(category => (
                                         <option key={category._id} value={category.Name}>{category.Name}</option>
                                     ))}
