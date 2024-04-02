@@ -32,10 +32,9 @@ const Navbar = () => {
                     {
                         isLogged && (
                             <ul className="flex gap-4">
-                                <li><a href="/category/category-add">Add Category</a></li>
-                                <li><a href="/category/category-view">View Category</a></li>
-                                <li><a href="/product/product-add">Add Product</a></li>
-                                <li><a href="/product/product-view">View Product</a></li>
+                                <li><a href="/category_dash">Category</a></li>
+                                <li><a href="/product_dash">Product</a></li>
+                                <li><a href="/cashier_dash">Cashier</a></li>
                             </ul>
                         )
                     }
@@ -64,13 +63,16 @@ const Navbar = () => {
                                 <li
                                 className='cursor-pointer border-b border-gray-400 pb-2'
                                 ><a href="/product/product-view">View Product</a></li>
+                                <li 
+                                className='cursor-pointer border-b border-gray-400 pb-2'
+                                ><a href="/cashier/cashier-add">Add Cashier</a></li>
                             </ul>
                         )
                     }
                 </div>
                 <div className="flex gap-4 mt-2">
                     {isLogged ? (
-                        <button onClick={handleLogout} className="bg-red-500 text-white px-4 py-2 rounded-md">Logout</button>
+                        <button onClick={handleLogout} className="bg-orange-500 text-white px-4 py-2 rounded-md">Logout</button>
                     ) : (
                         <button onClick={() => router.push('/login')} className="bg-blue-500 text-white px-4 py-2 rounded-md">Login</button>
                     )}
