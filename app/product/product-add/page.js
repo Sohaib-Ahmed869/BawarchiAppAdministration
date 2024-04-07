@@ -52,12 +52,7 @@ const ProductAdd = () => {
             .then(data => {
                 if (data.status == '200') {
                     alert("Product Added Successfully!");
-                    setName('');
-                    setDescription('');
-                    setPrice('');
-                    setCategory('');
-                    setImage('');
-                    setStatus('');
+                    window.location.reload();
                 } else {
 
                     alert("Error! Please try again.");
