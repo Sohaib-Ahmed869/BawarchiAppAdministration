@@ -105,7 +105,7 @@ const SalesDashboard = () => {
         , [year])
 
     return (
-        <main className="flex min-h-screen flex-col justify-between">
+        <main className="flex min-h-screen flex-col justify-between bg-black">
             <Navbar />
             <div className="container mx-auto mt-4 p-4 bg-gray-900 rounded-md shadow-md">
                 <h1 className="text-4xl font-bold text-center mt-9 text-white uppercase">Daily Sales</h1>

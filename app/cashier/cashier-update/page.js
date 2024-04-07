@@ -42,7 +42,7 @@ const CashierUpdate = () => {
   };
 
   return (
-    <div className="flex min-h-screen flex-col justify-between">
+    <div className="flex min-h-screen flex-col justify-between bg-black">
       <Navbar />
       <main className="container mx-auto px-4 py-8 flex flex-col md:flex-row justify-center items-center gap-4">
         <div className="w-full md:w-1/2 flex justify-center items-center">

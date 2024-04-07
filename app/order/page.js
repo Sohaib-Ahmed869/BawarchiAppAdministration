@@ -90,7 +90,7 @@ const CurrentOrders = () => {
   };
 
   return (
-    <div className="flex min-h-screen flex-col justify-between">
+    <div className="flex min-h-screen flex-col justify-between bg-black">
       <Navbar />
       <main className="container mx-auto px-4 py-8">
         <h2 className="text-2xl font-bold mb-4">All Orders</h2>

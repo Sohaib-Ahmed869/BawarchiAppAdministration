@@ -3,7 +3,7 @@ import Footer from "./pages/components/footer";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col justify-between">
+    <main className="flex min-h-screen flex-col justify-between bg-black">
       <Navbar />
       <div className="flex flex-col items-center justify-center gap-4">
         <h1 className="text-4xl font-bold text-center mt-9 text-white uppercase">
