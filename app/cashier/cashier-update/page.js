@@ -59,7 +59,7 @@ const CashierUpdate = () => {
           </h1>
           <div className="flex flex-col gap-4">
             {cashiers.map((cashier) => (
-              <div className="flex flex-row gap-4 items-center justify-between">
+              <div className="flex flex-row gap-4 items-center justify-between" key={cashier._id}>
                 <div className="text-white">
                   <p>Name: {cashier.Name}</p>
                   <p>Phone: {cashier.Phone}</p>
