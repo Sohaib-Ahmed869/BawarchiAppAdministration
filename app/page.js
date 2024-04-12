@@ -1,3 +1,6 @@
+"use client"
+import React from "react";
+import { useState, useEffect } from "react";
 import Navbar from "./pages/components/navbar";
 import Footer from "./pages/components/footer";
 

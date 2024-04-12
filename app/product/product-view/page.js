@@ -46,6 +46,25 @@ const ProductView = () => {
             });
     }
 
+    const deleteProduct = (productId) => {
+
+        fetch(`${BACKEND}/admin/product/${productId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('Data', data);
+                getProducts();
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+
+
 
 
     return (
@@ -70,7 +89,8 @@ const ProductView = () => {
                                 <th className="text-left">Category</th>
 
                                 <th className="text-left">Status</th>
-                                <th className="text-left">Actions</th>
+                                <th className="text-left">Edit</th>
+                                <th className="text-left">Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -80,11 +100,15 @@ const ProductView = () => {
                                     <td>{product.Name}</td>
                                     <td>{product.Price}</td>
                                     <td>{product.Category}</td>
-                                    <td>{product.Status}</td>
+                                    <td> <button onClick={() => updateProductStatus(product._id)} className={`px-4 py-2 rounded-md ${product.Status === 'Available' ? 'bg-green-600' : 'bg-red-600'}`}
+                                    >{product.Status}</button></td>
                                     <td>
-                                        <button onClick={() => updateProductStatus(product._id)} className="text-white px-4 py-2 rounded-md bg-gray-600">Status</button>
+                                       
                                         <button onClick={() => window.location.href = `/product/product-view/${product._id}`}
                                         className="text-white px-4 py-2 rounded-md bg-gray-700 ml-5">Edit</button>
+                                    </td>
+                                    <td>
+                                        <button onClick={() => deleteProduct(product._id)} className="text-white px-4 py-2 rounded-md bg-red-600">Delete</button>
                                     </td>
                                 </tr>
                             ))}
