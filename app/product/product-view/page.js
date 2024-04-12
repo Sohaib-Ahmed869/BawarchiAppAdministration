@@ -7,12 +7,15 @@ const BACKEND = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 const ProductView = () => {
     const [products, setProducts] = useState([]);
+    const [filteredProducts, setFilteredProducts] = useState([]);
+    const [search, setSearch] = useState('');
 
     const getProducts = () => {
         fetch(`${BACKEND}/admin/product/`)
             .then(res => res.json())
             .then(data => {
                 setProducts(data.products);
+                setFilteredProducts(data.products);
                 console.log('Data', data.products);
             })
             .catch(err => {
@@ -64,6 +67,15 @@ const ProductView = () => {
             });
     }
 
+    useEffect(() => {
+        setFilteredProducts(
+            products.filter(product =>
+                product.Name.toLowerCase().includes(search.toLowerCase())
+            )
+        );
+    }
+        , [search, products]);
+
 
 
 
@@ -80,6 +92,9 @@ const ProductView = () => {
                     <h2 className="text-2xl font-bold mb-4"
                         style={{ color: "#de6107" }}
                     >View Products</h2>
+                    <div className="flex justify-center">
+                        <input type="text" placeholder="Search Product" className="p-2 rounded-md bg-gray-800 text-white mb-10 w-full" value={search} onChange={e => setSearch(e.target.value)} />
+                    </div>
                     <table className="w-full">
                         <thead>
                             <tr className="bg-gray-800 text-white">
@@ -94,7 +109,7 @@ const ProductView = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {products && products.map((product, index) => (
+                            {filteredProducts && filteredProducts.map((product, index) => (
                                 <tr key={index} className="border-b border-gray-200 hover:bg-gray-900">
                                     <td className='p-9'><img src={`https://firebasestorage.googleapis.com/v0/b/bawarchi-61209.appspot.com/o/${product.Name}?alt=media&token=${product.token}`} alt={product.Name} className="w-16 h-16 object-cover rounded-md shadow-md" /></td>
                                     <td>{product.Name}</td>

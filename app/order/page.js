@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState, useEffect } from "react";
 import Footer from "../pages/components/footer";
 import Navbar from "../pages/components/navbar";
@@ -37,6 +37,24 @@ const CurrentOrders = () => {
       });
   };
 
+  const CancelOrder = (id) => {
+    fetch(`${BACKEND}/cashier/order/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ Status: "Cancelled" }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        getOrders();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const getOrders = () => {
     fetch(`${BACKEND}/cashier/orders/`)
       .then((res) => res.json())
@@ -44,7 +62,9 @@ const CurrentOrders = () => {
         let filteredOrders = data;
         // Apply date filter
         if (filterDate) {
-          filteredOrders = filteredOrders.filter((order) => order.Date.includes(filterDate));
+          filteredOrders = filteredOrders.filter((order) =>
+            order.Date.includes(filterDate)
+          );
         }
 
         // Apply month filter
@@ -70,7 +90,9 @@ const CurrentOrders = () => {
 
         // Apply status filter
         if (filterStatus) {
-          filteredOrders = filteredOrders.filter((order) => order.Status === filterStatus);
+          filteredOrders = filteredOrders.filter(
+            (order) => order.Status === filterStatus
+          );
         }
 
         setOrders(filteredOrders);
@@ -95,17 +117,17 @@ const CurrentOrders = () => {
       <main className="container mx-auto px-4 py-8">
         <h2 className="text-2xl font-bold mb-4">All Orders</h2>
         <div className="flex gap-2 mb-4 items-center justify-end">
-            <select 
+          <select
             value={filterStatus}
             onChange={(e) => setFilterStatus(e.target.value)}
             className="border border-gray-300 rounded-md px-3 py-2 bg-black text-white"
-            >
-                <option value="">Select Status</option>
-                <option value="Completed">Completed</option>
-                <option value="Pending">Pending</option>
-                <option value="Cancelled">Cancelled</option>
-                <option value="Delivered">Delivered</option>
-            </select>
+          >
+            <option value="">Select Status</option>
+            <option value="Completed">Completed</option>
+            <option value="Pending">Pending</option>
+            <option value="Cancelled">Cancelled</option>
+            <option value="Delivered">Delivered</option>
+          </select>
           <input
             type="date"
             value={filterDate}
@@ -137,7 +159,6 @@ const CurrentOrders = () => {
             onChange={(e) => setFilterYear(e.target.value)}
             placeholder="Year"
             className="border border-gray-300 rounded-md px-3 py-2 bg-black text-white"
-
           />
           <label className="flex items-center gap-2 text-white rounded-md border border-gray-700 p-2 justify-end">
             <input
@@ -164,9 +185,10 @@ const CurrentOrders = () => {
                   <h3 className="text-xl font-semibold">
                     Order ID: {order._id}
                   </h3>
-                  <p className="text-lg">
+                  <p className="text-sm">
                     Customer Name: {order.Customer_Name}
                   </p>
+                  <p className="text-sm">Status: {order.Status}</p>
                   <p className="text-lg">Total: {order.Total}</p>
                 </div>
                 <div className="flex items-left gap-2 text-white flex-col mt-4 text-left border-t border-gray-700 pt-4 ">
@@ -201,7 +223,16 @@ const CurrentOrders = () => {
                     ))}
                   </ul>
                 </div>
-                <div className="flex gap-4 mt-4 justify-end border-t border-gray-700 pt-4">
+                <div className="flex gap-4 mt-4 justify-between border-t border-gray-700 pt-4">
+                  {order.Status !== "Cancelled" &&
+                    order.Status !== "Completed" && (
+                      <button
+                        className="bg-red-500 text-white px-4 py-2 rounded-md"
+                        onClick={() => CancelOrder(order._id)}
+                      >
+                        Cancel Order
+                      </button>
+                    )}
                   <p className="bg-black text-white p-2 rounded-md border border-gray-700">
                     {convertDateToDateString(order.Date)}
                   </p>

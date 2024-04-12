@@ -19,7 +19,15 @@ const SalesDashboard = () => {
     const [cashSalesbyMonth, setCashSalesbyMonth] = useState([])
     const [numberOfOrdersMonth, setNumberOfOrdersMonth] = useState([])
 
-    const [month, setMonth] = useState(new Date().toISOString().split('T')[0])
+    const [foodPandaSalesbyDate, setFoodPandaSalesbyDate] = useState(0)
+    const [foodPandaSalesbyMonth, setFoodPandaSalesbyMonth] = useState(0)
+    const [foodPandaSalesbyYear, setFoodPandaSalesbyYear] = useState(0)
+
+    const [takeAwaySalesbyDate, setTakeAwaySalesbyDate] = useState(0)
+    const [takeAwaySalesbyMonth, setTakeAwaySalesbyMonth] = useState(0)
+    const [takeAwaySalesbyYear, setTakeAwaySalesbyYear] = useState(0)
+
+    const [month, setMonth] = useState(new Date().toISOString().split('T')[0].split('-')[1])
 
     const [year, setYear] = useState(new Date().toISOString().split('T')[0].split('-')[0])
 
@@ -41,7 +49,10 @@ const SalesDashboard = () => {
                 setTotalSalesbyDate(data.Total)
                 setCardSalesbyDate(data.Card)
                 setCashSalesbyDate(data.Cash)
+                setFoodPandaSalesbyDate(data.Foodpanda)
+                setTakeAwaySalesbyDate(data.TakeAway)
                 setNumberOfOrders(data.Number_of_Orders)
+
             })
             .catch(err => {
                 console.log(err.message)
@@ -61,6 +72,8 @@ const SalesDashboard = () => {
                 setTotalSalesbyMonth(data.Total)
                 setCardSalesbyMonth(data.Card)
                 setCashSalesbyMonth(data.Cash)
+                setFoodPandaSalesbyMonth(data.Foodpanda)
+                setTakeAwaySalesbyMonth(data.TakeAway)
                 setNumberOfOrdersMonth(data.Number_of_Orders)
             })
             .catch(err => {
@@ -81,6 +94,8 @@ const SalesDashboard = () => {
                 setTotalSalesbyYear(data.Total)
                 setCardSalesbyYear(data.Card)
                 setCashSalesbyYear(data.Cash)
+                setFoodPandaSalesbyYear(data.Foodpanda)
+                setTakeAwaySalesbyYear(data.TakeAway)
                 setNumberOfOrdersYear(data.Number_of_Orders)
             })
             .catch(err => {
@@ -116,6 +131,8 @@ const SalesDashboard = () => {
                     <h2>Total Sales: {totalSalesbyDate}</h2>
                     <h2>Card Sales: {cardSalesbyDate}</h2>
                     <h2>Cash Sales: {cashSalesbyDate}</h2>
+                    <h2>FoodPanda Sales: {foodPandaSalesbyDate}</h2>
+                    <h2>TakeAway Sales: {takeAwaySalesbyDate}</h2>
                     <h2>Number of Orders: {numberOfOrders}</h2>
                 </div>
             </div>
@@ -141,6 +158,8 @@ const SalesDashboard = () => {
                     <h2>Total Sales: {totalSalesbyMonth}</h2>
                     <h2>Card Sales: {cardSalesbyMonth}</h2>
                     <h2>Cash Sales: {cashSalesbyMonth}</h2>
+                    <h2>FoodPanda Sales: {foodPandaSalesbyMonth}</h2>
+                    <h2>TakeAway Sales: {takeAwaySalesbyMonth}</h2>
                     <h2>Number of Orders: {numberOfOrdersMonth}</h2>
                 </div>
             </div>
@@ -159,6 +178,8 @@ const SalesDashboard = () => {
                     <h2>Total Sales: {totalSalesbyYear}</h2>
                     <h2>Card Sales: {cardSalesbyYear}</h2>
                     <h2>Cash Sales: {cashSalesbyYear}</h2>
+                    <h2>FoodPanda Sales: {foodPandaSalesbyYear}</h2>
+                    <h2>TakeAway Sales: {takeAwaySalesbyYear}</h2>
                     <h2>Number of Orders: {numberOfOrdersYear}</h2>
                 </div>
             </div>
