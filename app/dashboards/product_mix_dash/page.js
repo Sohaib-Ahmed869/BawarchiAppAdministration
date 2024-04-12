@@ -11,7 +11,7 @@ const ProductMixDashboard = () => {
   const [mostSoldProductsByMonth, setMostSoldProductsByMonth] = useState([]);
   const [mostSoldProductsByYear, setMostSoldProductsByYear] = useState([]);
   const [filter, setFilter] = useState("date"); // ["date", "month", "year"
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
   const [month, setMonth] = useState(
@@ -88,6 +88,11 @@ const ProductMixDashboard = () => {
 
   return (
     <div className="flex min-h-screen flex-col justify-between bg-black">
+      {loading && (
+        <div className="fixed top-0 left-0 z-50 w-screen h-screen flex justify-center items-center bg-black bg-opacity-50">
+          <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
+        </div>
+      )}
       <Navbar />
       <main className="container mx-auto px-4 py-8 flex flex-col md:flex-row justify-center items-center gap-4">
         <div className="w-full md:w-1/2 flex justify-center items-center">
