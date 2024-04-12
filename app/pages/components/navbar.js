@@ -69,7 +69,7 @@ const Navbar = () => {
           }`}
         >
           {isLogged && (
-            <ul className="flex gap-4 flex-col bg-white text-black absolute right-7 top-10 p-4 rounded-md shadow-md border border-gray-900 w-40">
+            <ul className="flex gap-4 flex-col bg-white text-black absolute right-7 top-10 p-4 rounded-md shadow-md border border-gray-900 w-40 mt-10">
               <li className="cursor-pointer border-b border-gray-400 pb-2">
                 <a href="/dashboards/product_mix_dash">Product Reports</a>
               </li>
@@ -94,9 +94,9 @@ const Navbar = () => {
               <li className="cursor-pointer border-b border-gray-400 pb-2">
                 <a href="/cashier/cashier-update">View and Update Cashier</a>
               </li>
-              {/* <li
-                                className='cursor-pointer border-b border-gray-400 pb-2'
-                                ><a href="/order">Orders</a></li> */}
+              <li className="cursor-pointer border-b border-gray-400 pb-2">
+                <a href="/order">Orders</a>
+              </li>
             </ul>
           )}
         </div>

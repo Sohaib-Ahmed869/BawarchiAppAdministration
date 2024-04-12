@@ -47,6 +47,7 @@ const CurrentOrders = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        alert("Order Cancelled Successfully!");
         console.log(data);
         getOrders();
       })
@@ -116,7 +117,7 @@ const CurrentOrders = () => {
       <Navbar />
       <main className="container mx-auto px-4 py-8">
         <h2 className="text-2xl font-bold mb-4">All Orders</h2>
-        <div className="flex gap-2 mb-4 items-center justify-end">
+        <div className="flex gap-2 mb-4 items-center justify-end md:flex-row flex-col">
           <select
             value={filterStatus}
             onChange={(e) => setFilterStatus(e.target.value)}
@@ -181,9 +182,9 @@ const CurrentOrders = () => {
                 key={order._id}
                 className="bg-black bg-opacity-50 p-4 rounded-md shadow-md border border-gray-700"
               >
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-center flex-col md:flex-row">
                   <h3 className="text-xl font-semibold">
-                    Order ID: {order._id}
+                    Order ID: {order._id.slice(0, 8)}
                   </h3>
                   <p className="text-sm">
                     Customer Name: {order.Customer_Name}
@@ -198,7 +199,7 @@ const CurrentOrders = () => {
                         key={index}
                         className="flex items-center justify-between "
                       >
-                        <div className="flex gap-4 md:w-1/2">
+                        <div className="flex gap-4 text-sm w-1/3">
                           {item.Name} x {item.quantity}
                         </div>
                         <div className="flex gap-4 md:w-1/2">
@@ -240,14 +241,6 @@ const CurrentOrders = () => {
               </div>
             ))
           )}
-        </div>
-        <div className="fixed bottom-2 right-4">
-          <button
-            className="bg-orange-500 text-white px-4 py-2 rounded-md"
-            onClick={getOrders}
-          >
-            Refresh
-          </button>
         </div>
       </main>
       <Footer />
